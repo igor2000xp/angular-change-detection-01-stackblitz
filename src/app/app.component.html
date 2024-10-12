@@ -2,9 +2,11 @@
 <a target="_blank" href="https://angular.dev/overview">
   Learn more about Angular
 </a>
-<!-- @if (interval$ | async; as number) {
+@if (interval$ | async; as number) {
    <app-child [number]="number"></app-child>
-} -->
+}
+
+<app-child [number]="15"></app-child>
 <!-- <button (click)="handleClick()">Click</button> -->
 <!-- <h2>{{ interval$ | async }}</h2> -->
 <h2>{{ signal() }}</h2>

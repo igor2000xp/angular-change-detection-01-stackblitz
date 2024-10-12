@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DoCheck, signal } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, signal } from "@angular/core";
 import { ChildComponent } from "./child/child.component";
 import { interval } from "rxjs";
 import { AsyncPipe } from "@angular/common";
@@ -14,6 +14,10 @@ export class App implements DoCheck {
   title = 'Angular';
   interval$ = interval(1000);
   signal = signal(0);
+
+  constructor(private cdr: ChangeDetectorRef) {
+    this.cdr.detach();
+  };
 
   ngDoCheck() {
     console.log('ngDoCheck app-root');
