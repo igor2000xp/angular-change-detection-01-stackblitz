@@ -16,7 +16,7 @@ export class App implements DoCheck {
   signal = signal(0);
 
   constructor(private cdr: ChangeDetectorRef) {
-    this.cdr.detach();
+    // this.cdr.detach();
   };
 
   ngDoCheck() {
@@ -29,6 +29,7 @@ export class App implements DoCheck {
     setTimeout(() => {
       this.title = 'Hi world!';
       this.signal.set(1);
+      this.cdr.detach();
     }, 3000);
   }
 
