@@ -19,10 +19,6 @@ export class App implements DoCheck {
     // this.cdr.detach();
   };
 
-  ngDoCheck() {
-    console.log('ngDoCheck app-root');
-  }
-
   ngAfterViewInit() {
     console.log('ngAfterViewInit app-route');
 
@@ -35,6 +31,10 @@ export class App implements DoCheck {
     setInterval(() => {
       this.cdr.reattach();
     }, 6000)
+  }
+
+  ngDoCheck() {
+    console.log('ngDoCheck app-root');
   }
 
   handleClick() {

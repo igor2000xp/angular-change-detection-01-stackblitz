@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -10,7 +10,17 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class ChildComponent {
   @Input() number!: number;
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
   ngDoCheck() {
     console.log('ngDoCheck app-child');
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.number = 100;
+      this.cdr.markForCheck();
+    }, 5000)
   }
 }
