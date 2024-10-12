@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DoCheck } from "@angular/core";
+import { ChangeDetectionStrategy, Component, DoCheck, signal } from "@angular/core";
 import { ChildComponent } from "./child/child.component";
 import { interval } from "rxjs";
 import { AsyncPipe } from "@angular/common";
@@ -13,6 +13,7 @@ import { AsyncPipe } from "@angular/common";
 export class App implements DoCheck {
   title = 'Angular';
   interval$ = interval(1000);
+  signal = signal(0);
 
   ngDoCheck() {
     console.log('ngDoCheck app-root');
@@ -23,6 +24,7 @@ export class App implements DoCheck {
 
     setTimeout(() => {
       this.title = 'Hi world!';
+      this.signal.set(1);
     }, 3000);
   }
 
