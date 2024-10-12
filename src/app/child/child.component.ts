@@ -12,18 +12,21 @@ import { GreenComponent } from '../green/green.component';
 export class ChildComponent {
   @Input() number!: number;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) {
+    this.cdr.detach();
+  }
 
   ngDoCheck() {
     console.log('ngDoCheck app-child');
   }
 
   ngAfterViewInit() {
-    // setTimeout(() => {
+    setTimeout(() => {
       // this.number = 100;
       // this.cdr.markForCheck();
-    // }, 5000)
-    this.number = 100;
-    this.cdr.detectChanges();
+      this.cdr.detectChanges();
+    }, 5000)
+    // this.number = 100;
+    // this.cdr.detectChanges();
   }
 }
