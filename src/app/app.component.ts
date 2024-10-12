@@ -30,7 +30,11 @@ export class App implements DoCheck {
       this.title = 'Hi world!';
       this.signal.set(1);
       this.cdr.detach();
-    }, 3000);
+    }, 3000)
+
+    setInterval(() => {
+      this.cdr.reattach();
+    }, 6000)
   }
 
   handleClick() {
