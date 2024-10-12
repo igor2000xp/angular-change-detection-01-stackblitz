@@ -7,15 +7,7 @@ import { AsyncPipe } from "@angular/common";
   selector: 'app-root',
   imports: [ChildComponent, AsyncPipe],
   standalone: true,
-  template: `
-    <h1>Hello from {{ title }}!</h1>
-    <a target="_blank" href="https://angular.dev/overview">
-      Learn more about Angular
-    </a>
-    @if (interval$ | async; as number) {
-      <app-child [number]="number"></app-child>
-    }
-  `,
+  templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App implements DoCheck {
@@ -32,5 +24,9 @@ export class App implements DoCheck {
     setTimeout(() => {
       this.title = 'Hi world!';
     }, 3000);
+  }
+
+  handleClick() {
+    console.log('handleClick');
   }
 }
